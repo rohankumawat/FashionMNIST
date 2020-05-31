@@ -55,7 +55,7 @@ history = model.fit(X_train, Y_train, epochs = epochs, callbacks = callbacks)
 
 accuracy = history.history['accuracy'][0]*100
 
-output_file = open('accuracy.txt','w')
+output_file = open('/root/fashion/accuracy.txt','w')
 output_file.write(str(accuracy)[0:2])
 output_file.close()
 
