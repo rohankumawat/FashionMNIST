@@ -27,7 +27,7 @@ reduce_lr = ReduceLROnPlateau(monitor = 'val_loss',
                               verbose = 1,
                               min_delta = 0.00001)
 
-callbacks = [earlystop, checkpoint, reduce_lr]
+callbacks = [earlystop, reduce_lr]
 
 (X_train, y_train), (X_test, y_test) = fashion_mnist.load_data()
 X_train = X_train.reshape(X_train.shape[0], 28, 28, 1)
