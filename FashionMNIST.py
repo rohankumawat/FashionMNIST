@@ -51,7 +51,7 @@ model.compile(loss='categorical_crossentropy',
 
 
 epochs = 5
-history = model.fit(X_train, Y_train, epochs = epochs, callbacks = callbacks)
+history = model.fit(X_train, Y_train, epochs = epochs, callbacks = callbacks, validation_data=(X_test, Y_test))
 
 accuracy = model.evaluate(X_test, Y_test)[1]*100
 acc = str(accuracy)[0:2]
