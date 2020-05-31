@@ -56,7 +56,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'],
               optimizer='adam')
 
-model.save("fashionmnist.h5")
+model.save("/root/fashion/fashionmnist.h5")
 
 epochs = 1
 history = model.fit(X_train, Y_train, epochs = epochs, callbacks = callbacks)
