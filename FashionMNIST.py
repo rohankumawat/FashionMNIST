@@ -50,7 +50,7 @@ model.compile(loss='categorical_crossentropy',
               optimizer='adam')
 
 
-epochs = 1
+epochs = 5
 history = model.fit(X_train, Y_train, epochs = epochs, callbacks = callbacks)
 
 accuracy = history.history['accuracy'][0]*100
