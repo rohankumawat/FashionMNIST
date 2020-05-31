@@ -13,6 +13,7 @@ from keras.layers import Dense, Dropout, Conv2D, MaxPool2D, Flatten
 from keras.optimizers import Adam
 from keras.utils.np_utils import to_categorical
 from keras.callbacks import ModelCheckpoint, EarlyStopping
+from keras.models import load_model
 
 checkpoint = ModelCheckpoint("fashionmnist.h5",
                              monitor = "val_loss",
@@ -47,6 +48,8 @@ model.add(Dense(10, activation='softmax'))
 model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'],
               optimizer='adam')
+
+save_model = load_model('FCBarcelona_vgg16.h5')
 
 epochs = 1
 history = model.fit(X_train, Y_train, epochs = epochs, callbacks = callbacks)
