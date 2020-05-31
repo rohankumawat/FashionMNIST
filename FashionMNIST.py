@@ -14,7 +14,6 @@ from keras.optimizers import Adam
 from keras.utils import np_utils
 from keras.utils.np_utils import to_categorical
 from keras.callbacks import ModelCheckpoint, EarlyStopping
-from keras.models import load_model
 
 
 checkpoint = ModelCheckpoint("fashionmnist.h5",
@@ -29,7 +28,13 @@ earlystop = EarlyStopping(monitor = "val_loss",
                           verbose = 1,
                           restore_best_weights = True)
 
-callbacks = [earlystop, checkpoint]
+reduce_lr = ReduceLROnPlateau(monitor = 'val_loss',
+                              factor = 0.2,
+                              patience = 3,
+                              verbose = 1,
+                              min_delta = 0.00001)
+
+callbacks = [earlystop, checkpoint, reduce_lr]
 
 (X_train, y_train), (X_test, y_test) = fashion_mnist.load_data()
 X_train = X_train.reshape(X_train.shape[0], 28, 28, 1)
@@ -51,7 +56,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'],
               optimizer='adam')
 
-save_model = load_model('fashionmnist.h5')
+model.save("fashionmnist.h5")
 
 epochs = 1
 history = model.fit(X_train, Y_train, epochs = epochs, callbacks = callbacks)
