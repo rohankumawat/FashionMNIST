@@ -13,7 +13,7 @@ from keras.layers import Dense, Dropout, Conv2D, MaxPool2D, Flatten
 from keras.optimizers import Adam
 from keras.utils import np_utils
 from keras.utils.np_utils import to_categorical
-from keras.callbacks import ModelCheckpoint, EarlyStopping
+from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
 
 
 checkpoint = ModelCheckpoint("fashionmnist.h5",
