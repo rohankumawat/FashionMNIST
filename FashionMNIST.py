@@ -47,7 +47,7 @@ model.add(Dense(128, activation='relu'))
 model.add(Dense(10, activation='softmax'))
 model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'],
-              optimizer='adam')
+              optimizer=Adam(lr=0.001))
 
 
 epochs = 5
