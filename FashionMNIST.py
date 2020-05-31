@@ -16,7 +16,7 @@ from keras.utils.np_utils import to_categorical
 from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
 
 
-checkpoint = ModelCheckpoint("fashionmnist.h5",
+checkpoint = ModelCheckpoint("/root/fashion/fashionmnist.h5",
                              monitor = "val_loss",
                              mode = "min",
                              save_best_only = True,
