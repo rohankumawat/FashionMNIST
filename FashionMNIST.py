@@ -13,14 +13,7 @@ from keras.layers import Dense, Dropout, Conv2D, MaxPool2D, Flatten
 from keras.optimizers import Adam
 from keras.utils import np_utils
 from keras.utils.np_utils import to_categorical
-from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
-
-
-checkpoint = ModelCheckpoint("/root/fashion/fashionmnist.h5",
-                             monitor = "val_loss",
-                             mode = "min",
-                             save_best_only = True,
-                             verbose = 1)
+from keras.callbacks import EarlyStopping, ReduceLROnPlateau
 
 earlystop = EarlyStopping(monitor = "val_loss",
                           min_delta = 0,
@@ -56,7 +49,6 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'],
               optimizer='adam')
 
-model.save("/root/fashion/fashionmnist.h5")
 
 epochs = 1
 history = model.fit(X_train, Y_train, epochs = epochs, callbacks = callbacks)
