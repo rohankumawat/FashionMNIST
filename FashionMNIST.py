@@ -53,7 +53,7 @@ model.compile(loss='categorical_crossentropy',
 epochs = 5
 history = model.fit(X_train, Y_train, epochs = epochs, callbacks = callbacks, validation_data=(X_test, Y_test))
 
-accuracy = model.evaluate(X_test, Y_test)[1]*100
+accuracy = history.history['accuracy'][-1]
 acc = str(accuracy)[0:2]
 
 output_file = open('/root/fashion/accuracy.txt','w')
